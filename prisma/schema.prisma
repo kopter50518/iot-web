@@ -1,0 +1,17 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model STT030 {
+  id         Int       @id @default(autoincrement())
+  temp       Decimal?  @db.Decimal
+  status     Boolean?
+  timestamp  DateTime? @default(now()) @db.Timestamp(6)
+  system_on  Boolean?  @default(true)
+  updated_at DateTime? @default(now()) @db.Timestamp(6)
+}
